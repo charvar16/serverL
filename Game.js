@@ -1,15 +1,8 @@
-const useState = require('./useState.js')
-
 function Game(i, currentSquares, currentMove){
   let gameOver=false
   function xIsNext(value){
     return value % 2 === 0;
   }
-
-/*     if (calculateWinner(currentSquares) || currentSquares[i]) {
-    console.log('Somebody won', i, currentSquares[i])
-    return
-  } */
 
   const nextSquares = currentSquares.slice();
   if (xIsNext(currentMove)) {
@@ -55,5 +48,5 @@ function Game(i, currentSquares, currentMove){
 return [nextSquares, currentMove, statuso, gameOver, xIsNext(currentMove)]
 }
 
-  module.exports = Game
+module.exports = Game
   
