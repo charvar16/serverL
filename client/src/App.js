@@ -15,6 +15,7 @@ function App() {
   let openGames = [];
   const [board, setBoard] = useState(openGames);
   const room = {value:'---', setValue: function(r){this.value = r}}
+  const [room2, setRoom2] = useState('')
  
   // Socket communication
   socket.on('initBoard', (juegosAbiertos)=>{
@@ -26,7 +27,8 @@ function App() {
 
   function newGame(){
     room.setValue(socket.id)
-    console.log(`(line 29 App.js debug) room.value: ${room.value}`)
+    room2.setRoom2(socket.id)
+    console.log(`(line 29 App.js debug) room.value: ${room.value} room2: ${room2}`)
     socket.emit('createdRoom', room.value)
   }
   socket.on('updateGameBoard', (updated) =>{
@@ -36,7 +38,8 @@ function App() {
   
   const joinGame = (creator) =>{
     room.setValue(creator)
-    console.log(`(line 39 App.js debug) room.value: ${room.value}`)
+    room2.setRoom2(creator)
+    console.log(`(line 39 App.js debug) room.value: ${room.value} room2: ${room2}`)
     socket.emit('joinRoom', creator, socket.id)
   }
 
@@ -52,7 +55,7 @@ function App() {
   const clickedSquare = (i) => {
     let id = socket.id
     let roomo = room.value
-    console.log(`(line 55 App.js debug) CLICKEDSQUARE - i: ${i}, id: ${id}, room.value: ${room.value}`)
+    console.log(`(line 55 App.js debug) CLICKEDSQUARE - i: ${i}, id: ${id}, room.value: ${room.value}, room2: ${room2}`)
     socket.emit('clickedSquare', i, id,roomo)
   }
   socket.on('data',(currentSquaresZ)=>{

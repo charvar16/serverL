@@ -8,8 +8,8 @@ return (
     <div>
         <h1>Welcome to your game</h1>
         <TicTacToe />
-        <p>Players will TOTALLY arrive shortly</p>
-        <Link to={`/`} onClick={()=>exitGame()}>Salir del Juego</Link>
+        <p>Players will arrive shortly</p>
+        <Link to={`/`} onClick={()=>exitGame()}>Exit the game</Link>
     </div>
   )} 
   
